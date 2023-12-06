@@ -30,3 +30,29 @@ An API allows end-users to access properties and methods of data structures easi
 without needing to do the “behind the scenes” work./*
 
 */
+
+/* create a new data structure or an API or a class
+  Stack */
+
+class Stack {
+  constructor() {
+    this._array = [];
+  }
+
+  push(newValue) {
+    this._array.push(newValue);
+  }
+
+  pop() {
+    return this._array.pop();
+  }
+}
+
+/* even though we put underscore before array as _array indicating 
+  the interaction should be limited with the underlying array
+  But users can still break the intended behavior of the Stack class 
+
+  */
+
+const stack = new Stack();
+stack._array.unshift('value');
