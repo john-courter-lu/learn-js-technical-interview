@@ -5,17 +5,23 @@ class Node {
   }
 
   setNextNode(node) {
-    if (node instanceof Node || node === null) {
-      this.next = node;
-    } else {
-      throw new Error("message");
+    try {
+      if (node instanceof Node || node === null) {
+        this.next = node;
+      } else {
+        throw new Error("Invalid node type");
+      }
+    } catch (error) {
+      console.error("Error caught:", error.message);
     }
   }
 }
 
-const firstNode = new Node("I am an instance of a Node!");
-const testingString = "a string, not a node"
-firstNode.setNextNode(testingString)
-console.log(firstNode.next);
+const firstNode = new Node('I am an instance of a Node!');
+const invalidNode = "Not a Node instance";
 
-module.exports = Node;
+try {
+  firstNode.setNextNode(invalidNode); // will triger {throw new Error}
+} catch (error) { // a second layer of catching errors
+  console.error("Error caught outside the method:", error.message);
+}
