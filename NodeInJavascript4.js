@@ -1,7 +1,9 @@
 class Node {
   constructor(data) {
     this.data = data;
-    this.next = null;
+    this.next = null; 
+    // When instances of our Node class are created, they are orphan nodes. 
+    // The data property is set to the constructor argument, but the next node is null.
   }
 
   setNextNode(node) {
